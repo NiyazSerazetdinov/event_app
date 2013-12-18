@@ -1,0 +1,11 @@
+<li>
+  <ol>
+      <span class="event_title">
+      <%= link_to event.event_title, edit_event_path(:id) %>
+      </span>
+      <span class="timestamp">
+        Scheduled at <%= event.scheduled_at %> <%= event.recurrence %>.
+      </span>
+      <span class="content"><%= event.description %></span>
+  </ol>
+</li>

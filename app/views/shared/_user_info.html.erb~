@@ -1,0 +1,10 @@
+<h1>
+  <%= current_user.name %> :
+  <%= current_user.email %>
+</h1>
+<span>
+  <%= link_to "view my profile", current_user %>
+</span>
+<span>
+  <%= link_to "create new event", new_event_path %>
+</span>

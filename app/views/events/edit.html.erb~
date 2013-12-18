@@ -1,0 +1,24 @@
+<h2>Edit your event</h2>
+
+<div class="row">
+  <div class="span6 offset5">
+    <%= form_for(@event) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :event_title %>
+      <%= f.text_field :event_title %>
+
+      <%= f.label :scheduled_at %>
+      <span class="span5 offset1"><%= f.date_select( :scheduled_at, order: [:day, :month, :year]) %></span>
+
+      <%= f.label :recurrence %>
+      <%= f.select :recurrence, options_for_select(%w[Once Daily Weekly Every_month Every_year])%>
+
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+
+      <div><%= f.submit "Save changes", class: "btn btn-large btn-primary" %></div>
+
+    <% end %>   
+  </div>
+</div>

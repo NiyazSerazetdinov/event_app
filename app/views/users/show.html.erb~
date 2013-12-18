@@ -1,0 +1,5 @@
+<h3>User</h3>
+<% if user.name != nil %>
+<p>User: <%= @user.name %></p>
+<% end %>
+<p>Email: <%= @user.email if @user.email %></p>
