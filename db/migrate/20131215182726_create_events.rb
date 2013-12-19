@@ -1,6 +1,7 @@
 class CreateEvents < ActiveRecord::Migration
   def change
     create_table :events do |t|
+      t.integer :user_id
       t.string :event_title
       t.date :scheduled_at
       t.string :recurrence

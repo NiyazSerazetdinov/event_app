@@ -14,8 +14,9 @@
 ActiveRecord::Schema.define(version: 20131215182726) do
 
   create_table "events", force: true do |t|
+    t.integer  "user_id"
     t.string   "event_title"
-    t.datetime "scheduled_at"
+    t.date     "scheduled_at"
     t.string   "recurrence"
     t.string   "description"
     t.datetime "created_at"

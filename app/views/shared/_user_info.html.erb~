@@ -1,10 +1,7 @@
 <h1>
-  <%= current_user.name %> :
-  <%= current_user.email %>
+  <%= current_user.name %></br>
+  <%= current_user.email %>  
 </h1>
-<span>
-  <%= link_to "view my profile", current_user %>
-</span>
-<span>
+<p>
   <%= link_to "create new event", new_event_path %>
-</span>
+</p>

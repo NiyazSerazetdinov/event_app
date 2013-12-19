@@ -9,10 +9,10 @@
       <%= f.text_field :event_title %>
 
       <%= f.label :scheduled_at %>
-      <span class="span5 offset1"><%= f.date_select( :scheduled_at, order: [:day, :month, :year]) %></span>
+      <%= f.date_select( :scheduled_at, order: [:day, :month, :year]) %>
 
       <%= f.label :recurrence %>
-      <%= f.select :recurrence, options_for_select(%w[Once Daily Weekly Every_month Every_year])%>
+      <%= f.select :recurrence, options_for_select(['Once', 'Daily', 'Weekly', 'Every month', 'Every year'])%>
 
       <%= f.label :description %>
       <%= f.text_area :description %>

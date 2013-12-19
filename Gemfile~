@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 gem 'rails', '4.0.2'
 gem 'sqlite3'
-gem 'bootstrap-sass', '2.1'
+gem 'bootstrap-sass'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 
@@ -15,7 +15,6 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'jquery_datepicker'
 gem "devise", ">= 3.2.2"
 gem "figaro", ">= 0.5.3"
 gem 'protected_attributes'

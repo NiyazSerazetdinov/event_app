@@ -1,3 +1,35 @@
-<h3>User</h3>
-<p>User: <%= @user.name %></p>
-<p>Email: <%= @user.email if @user.email %></p>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <%= render 'shared/user_info' %>
+      <span><%= pluralize(current_user.events.count, "event") %></span>      
+    </section>
+  </aside>
+  <div class="span8">
+    <div class="tabbable">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#list_of_all_events" data-toggle="tab">List of all events</a></li>
+        <li><a href="#list_of_today_events" data-toggle="tab">List of today events</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="list_of_all_events">
+          <% if current_user.events.any? %>
+            <h3>You have <%= pluralize(@events_all.count, "event") %></h3>
+            <ol class="events">
+              <%= render @events_all %>
+            </ol>
+            <%= will_paginate @events_all %>
+          <% end %>
+        </div>
+        <div class="tab-pane" id="list_of_today_events">
+          <% if current_user.events.any? %>
+            <ol class="events">
+              <%#= render @events_current %>
+            </ol>
+            <%#= will_paginate @events_current %>
+          <% end %>
+        </div>
+      </div>
+    </div>    
+  </div>
+</div>

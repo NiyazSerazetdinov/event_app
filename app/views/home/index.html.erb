@@ -4,27 +4,16 @@
       <section>
         <%= render 'shared/user_info' %>
       </section>
+      <span>
+        <%= link_to "view my profile", current_user %>
+      </span>
     </aside>
     <div class="span8">
       <h3>Event list</h3>
-      <% @events.each do |event| %>
-      <div>
-        <span class="event_title">
-          <%= link_to event.event_title, edit_event_path(event.id) %>
-        </span>
-        <span class="timestamp">
-          Scheduled at <%= time_tag(event.scheduled_at.to_date) %> <%= event.recurrence %>.
-        </span>
-        <span class="content">
-          <%= simple_format(event.description) %>
-        </span>
-        <span><%= link_to "delete", event, method: :delete,
-                                     data: { confirm: "You sure?" },
-                                     title: event.event_title %>
-        </span>
-      </div></br>
-      <% end %>
-      <%#= render 'shared/feed' %>
+      <ol class="events">
+        <%= render @events %>
+      </ol>
+      <%= will_paginate @events %>
     </div>    
   </div>
 <% else %>
@@ -39,5 +28,4 @@
     <%= link_to "Sign up now!", new_user_registration_path,
                                 class: "btn btn-large btn-primary" %>
   </div>
-
 <% end %>
