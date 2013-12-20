@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 ruby '2.0.0'
 gem 'rails', '4.0.2'
-gem 'sqlite3'
 gem 'bootstrap-sass'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
@@ -20,6 +19,7 @@ gem "figaro", ">= 0.5.3"
 gem 'protected_attributes'
 
 group :development, :test do
+  gem 'sqlite3'
   gem "rspec-rails", ">= 2.14.0"
   gem "factory_girl_rails", ">= 4.3.0"
 end
