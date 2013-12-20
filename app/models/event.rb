@@ -9,20 +9,4 @@ class Event < ActiveRecord::Base
 
   default_scope order: 'events.created_at DESC'
 
-  def repeats_today?
-    recurrence == "Daily"
-  end
-
-  def repeats_this_week?
-    (recurrence == "Weekly") && (scheduled_at.wday == Date.today.wday)
-  end
-
-  def repeats_this_month?
-    (recurrence == "Every month") && (scheduled_at.wday == Date.today.wday)
-  end
-
-  def repeats_this_year?
-    (recurrence == 'Every year') && (scheduled_at.mday == date.now.mday) && (scheduled_at.month == Date.now.month)
-  end
-
 end

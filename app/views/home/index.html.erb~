@@ -11,7 +11,7 @@
     <div class="span8">
       <h3>Event list</h3>
       <ol class="events">
-        <%= render @events_all %>
+        <%= render @events %>
       </ol>
       <%= will_paginate @events %>
     </div>    

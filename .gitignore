@@ -17,3 +17,11 @@
 
 # Ignore application configuration
 /config/application.yml
+
+#Ignore rest of unneeded files
+doc/
+*.swp
+*~
+.project
+.DS_Store
+.idea

@@ -22,11 +22,12 @@
           <% end %>
         </div>
         <div class="tab-pane" id="list_of_today_events">
+          <h3>Today you have <%= pluralize(@events_current.count, "event") %></h3>
           <% if current_user.events.any? %>
             <ol class="events">
-              <%#= render @events_current %>
+              <%= render @events_current %>
             </ol>
-            <%= will_paginate @events_current %>
+            <%#= will_paginate @events_current %>
           <% end %>
         </div>
       </div>
