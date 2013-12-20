@@ -39,6 +39,8 @@ module EventsApp
 
     config.assets.initialize_on_precompile = false
 
+    config.assets.precompile += %w( 'application.js', 'application.css')
+
     config.filter_parameters += [:password, :password_confirmation]
   end
 end
