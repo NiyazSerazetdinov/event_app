@@ -26,8 +26,7 @@
           <% if current_user.events.any? %>
             <ol class="events">
               <%= render @events_current %>
-            </ol>
-            <%#= will_paginate @events_current %>
+            </ol>            
           <% end %>
         </div>
       </div>

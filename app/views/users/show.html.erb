@@ -13,8 +13,8 @@
       </ul>
       <div class="tab-content">
         <div class="tab-pane active" id="list_of_all_events">
+          <h3>You have <%= pluralize(@events_all.count, "event") %></h3>
           <% if current_user.events.any? %>
-            <h3>You have <%= pluralize(@events_all.count, "event") %></h3>
             <ol class="events">
               <%= render @events_all %>
             </ol>
