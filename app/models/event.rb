@@ -30,4 +30,7 @@ class Event < ActiveRecord::Base
     self.recurrence == "Every year" && self.scheduled_at.mday == Date.today.mday && self.scheduled_at.month == Date.today.month
   end
 
+  def today_event?
+    self.occur_today? || self.occur_daily? || self.occur_weekly_today? || self.occur_every_month_today? || self.occur_every_year_today?
+  end
 end

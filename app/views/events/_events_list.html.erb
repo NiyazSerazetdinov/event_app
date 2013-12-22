@@ -1,0 +1,83 @@
+<div class="tabbable">
+        <ul class="nav nav-tabs">
+          <li class="active">
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                All events
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a tabindex="-1" href="#list_of_all_events"
+                                                           data-toggle="tab">
+                  List of all events</a>
+                </li>
+                <li><a tabindex="-1" href="#list_of_today_events"
+                                                           data-toggle="tab">
+                  List of today events</a>
+                </li>
+              </ul>
+             </li>             
+           </li>
+           <% if current_user.events.any? %>
+           <li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                My events
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a tabindex="-1" href="#list_of_my_all_events"
+                                                            data-toggle="tab">
+                  List of all events</a>
+                </li>
+                <li><a tabindex="-1" href="#list_of_my_today_events"
+                                                            data-toggle="tab">
+                  List of today events</a>
+                </li>
+              </ul>
+            </li>
+          </li>
+          <% else %>
+            <li class="disabled"> 
+              <a href="#">My events</a>
+            </li> 
+          <% end %>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="list_of_all_events">
+            <h4>
+              <%= pluralize(@events_all.count, "event") %> planned in all
+            </h4>
+            <ol>
+               <%= render @events_all %>
+            </ol>
+            <%= will_paginate @events_all %>          
+          </div>
+          <div class="tab-pane" id="list_of_today_events">
+            <h4>
+              <%= pluralize(@events_current.count, "event") %> scheduled for today
+            </h4>
+            <ol>
+              <%= render @events_current %>
+            </ol>
+          </div>
+          <div class="tab-pane" id="list_of_my_all_events">
+            <h4>
+              You have <%= pluralize(@my_events_all.count, "event") %> in all
+            </h4>
+            <ol>
+              <%= render @my_events_all %>
+            </ol>
+            <%= will_paginate @my_events_all %>          
+          </div>
+          <div class="tab-pane" id="list_of_my_today_events">
+            <h4>
+              You have <%= pluralize(@my_events_current.count, "event") %> 
+                                                          schedulled for today
+            </h4>
+            <ol>
+              <%= render @my_events_current %>
+            </ol>
+          </div>
+        </div>
+</div>

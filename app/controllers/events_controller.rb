@@ -1,11 +1,12 @@
 class EventsController < ApplicationController
 
   def index
+    @events_all = Event.paginate(page: params[ :page], per_page: 10)
+    @events_current = Event.all.find_all{ |elem| elem.today_event?}
+    if user_signed_in?
     @my_events_all = current_user.events.paginate(page: params[ :page], per_page: 10)
-    @my_events_current = current_user.events.find_all{ |elem| elem.occur_today? || 
-                               elem.occur_daily? || elem.occur_weekly_today? ||
-                                               elem.occur_every_month_today? ||
-                                                elem.occur_every_year_today?}
+    @my_events_current = current_user.events.find_all{ |elem| elem.today_event?}
+    end
   end
 
   def new

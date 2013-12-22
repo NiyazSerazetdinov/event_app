@@ -1,54 +1,24 @@
-<div class="row">
-  <aside class="span4">
-    <section>
-      <%= render 'shared/user_info' %>
-      <ul class="breadcrumb">
-        <li><%= link_to "All", root_url %> /</li>
-        <li class="active">My </li> events         
-      </ul>
-      <% if current_user.events.any? %>
-      <span>
-        You have <%= pluralize(@my_events_all.count, "event") %>
-      </span>   
-      <% else %>
-        You have 0 events
-      <% end %>   
-    </section>
-  </aside>
-  <div class="span8">
-    <% if current_user.events.any? %>
-    <div class="tabbable">
-      <ul class="nav nav-tabs">
-        <li class="active">
-          <a href="#list_of_my_all_events" data-toggle="tab">
-            List of all events
-           </a>
-         </li>
-        <li>
-          <a href="#list_of_my_today_events" data-toggle="tab">
-            List of today events
-          </a>
-        </li>
-      </ul>
-      <div class="tab-content">
-        <div class="tab-pane active" id="list_of_my_all_events">
-          <h4>
-            You have <%= pluralize(@my_events_all.count, "event") %> in all
-          </h4>
-          <%= render @my_events_all %>
-          <%= will_paginate @my_events_all %>          
-        </div>
-        <div class="tab-pane" id="list_of_my_today_events">
-          <h4>
-            You have <%= pluralize(@my_events_current.count, "event") %> 
-                                                          schedulled for today
-          </h4>
-          <%= render @my_events_current %> 
-        </div>
-      </div>
-    </div>
-    <% else%>
-      You don't have any events yet
-    <% end%>
+<% if user_signed_in? %>
+  <div class="row">
+    <aside class="span4">
+      <section>
+        <%= render 'shared/user_info' %>
+      </section>      
+    </aside>
+    <div class="span8">
+      <%= render 'events/events_list'%>
+    </div>    
   </div>
-</div>
+<% else %>
+  <div class="center hero-unit">
+    <h1>Welcome to the Event App</h1>
+
+    <h2>
+      This is the home page for the
+     Events managing application.
+    </h2>
+
+    <%= link_to "Sign up now!", new_user_registration_path,
+                                class: "btn btn-large btn-primary" %>
+  </div>
+<% end %>

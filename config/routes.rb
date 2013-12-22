@@ -1,5 +1,5 @@
 EventsApp::Application.routes.draw do
-  root to: "users#index"
+  root to: "events#index"
   
   devise_for :users
   resources :users do
