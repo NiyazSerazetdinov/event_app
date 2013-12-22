@@ -34,8 +34,7 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-sass (3.0.3.0)
-      sass (~> 3.2)
+    bootstrap-sass (2.1.0.0)
     bootstrap-will_paginate (0.0.6)
       will_paginate
     builder (3.1.4)
@@ -190,7 +189,7 @@ PLATFORMS
 DEPENDENCIES
   better_errors (>= 0.3.2)
   binding_of_caller (>= 0.6.8)
-  bootstrap-sass
+  bootstrap-sass (= 2.1)
   bootstrap-will_paginate (= 0.0.6)
   capybara (>= 2.2.0)
   coffee-rails (~> 4.0.1)

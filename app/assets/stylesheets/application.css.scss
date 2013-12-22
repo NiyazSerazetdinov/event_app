@@ -10,7 +10,7 @@
  *
  *= require_self
  *= require_tree .
- */
+*/
 @import "bootstrap";
 
 $grayMediumLight: #eaeaea;
@@ -159,15 +159,13 @@ aside {
 .events {
   list-style: none;
   margin: 10px 0 0 0;
-
-  li {
-    padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
-  }
+  border-bottom: 1px solid #e8e8e8;
 }
+
 .content {
   display: block;
 }
+
 .timestamp {
   color: $grayLight;
 }
@@ -182,7 +180,6 @@ aside {
 .event {
   .scheduled-at {
     padding: 11px;
-    
   }
 
   .title {
@@ -211,4 +208,3 @@ aside {
 #event_scheduled_at_1i {
   width: 70px;
 }
-
