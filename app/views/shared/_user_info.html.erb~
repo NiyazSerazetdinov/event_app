@@ -1,7 +1,0 @@
-<h1>
-  <%= current_user.name %></br>
-  <%= current_user.email %>  
-</h1>
-<p>
-  <%= link_to "create new event", new_event_path %>
-</p>

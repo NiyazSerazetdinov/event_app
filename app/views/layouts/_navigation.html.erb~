@@ -1,6 +1,0 @@
-  <div class="container">
-    <%= link_to "event app", # %>
-   
-  </div>
-
-
