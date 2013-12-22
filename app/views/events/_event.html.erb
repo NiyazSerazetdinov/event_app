@@ -10,9 +10,11 @@
   <span class="timestamp">
     Scheduled at <%= time_tag(event.scheduled_at.to_date) %> <%= event.recurrence %>.
   </span>
+  <% if current_user == event.user %>
   <div class="content">
     <%= simple_format h(event.description) %>
   </div>
+  <% end %>
   <% if current_user == event.user %>
     <%= link_to "Delete",  user_event_path(current_user.id, event.id), method: :delete,
                                      data: { confirm: "You sure?" },
