@@ -3,8 +3,9 @@ class Event < ActiveRecord::Base
   belongs_to :user
 
   validates :user_id, presence: true
-  validates :event_title, presence: true, length: { maximum: 140 }
+  validates :event_title, presence: true, length: { maximum: 50 }
   validates :scheduled_at, presence: true
+  validates :description, length: { maximum: 140 }
   
 
   default_scope order: 'events.created_at DESC'
@@ -14,7 +15,7 @@ class Event < ActiveRecord::Base
   end
 
   def occur_daily?
-    self.recurrence == "Daily"
+    self.recurrence == "Daily" && self.scheduled_at < Date.today
   end
 
   def occur_weekly_today?
