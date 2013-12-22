@@ -23,5 +23,6 @@ event_list = [
 ]
 
 event_list.each do |user_id, event_title, scheduled_at, recurrence, description|
-  Event.create( user_id: user_id, event_title: event_title, scheduled_at: scheduled_at, recurrence: recurrence, description: description )
+  Event.create( user_id: user_id, event_title: event_title, scheduled_at: 
+                scheduled_at, recurrence: recurrence, description: description )
 end
