@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="span6 offset5">
-    <%= form_for(@event) do |f| %>
+    <%= form_for [current_user, @event] do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
       <%= f.label :event_title %>
@@ -12,12 +12,15 @@
       <%= f.date_select( :scheduled_at, order: [:day, :month, :year]) %>
 
       <%= f.label :recurrence %>
-      <%= f.select :recurrence, options_for_select([' ', 'Daily', 'Weekly', 'Every month', 'Every year'])%>
+      <%= f.select :recurrence, options_for_select([' ', 'Daily', 'Weekly', 
+                                                 'Every month', 'Every year'])%>
 
       <%= f.label :description %>
       <%= f.text_area :description, placeholder: "Maybe some notes?..." %>
     
-      <div><%= f.submit "Create", class: "btn btn-large btn-primary" %></div>
+      <div>
+        <%= f.submit "Create", class: "btn btn-large btn-primary" %>
+      </div>
   
     <% end %>
   </div>

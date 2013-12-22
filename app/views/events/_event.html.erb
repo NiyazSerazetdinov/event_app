@@ -1,7 +1,8 @@
-<li>  
+<ol class="events">
+<li class="events">  
   <span class="event_title">
     <% if current_user == event.user %>
-      <%= link_to event.event_title, edit_event_path(event.id) %>
+      <%= link_to event.event_title, edit_user_event_path(current_user, event) %>
     <% else %>
       <%= event.event_title %>
     <% end%>
@@ -9,14 +10,15 @@
   <span class="timestamp">
     Scheduled at <%= time_tag(event.scheduled_at.to_date) %> <%= event.recurrence %>.
   </span>
-  <span class="content">
-    <%= simple_format(event.description) %>
-  </span>
+  <div class="content">
+    <%= simple_format h(event.description) %>
+  </div>
   <% if current_user == event.user %>
-    <%= link_to "delete", event, method: :delete,
+    <%= link_to "Delete",  user_event_path(current_user.id, event.id), method: :delete,
                                      data: { confirm: "You sure?" },
                                      title: event.event_title %>
   <% else %>
     Created by <%= event.user.email %>   
   <% end %>
 </li>
+</ol>

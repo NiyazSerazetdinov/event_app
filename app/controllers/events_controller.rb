@@ -1,11 +1,15 @@
 class EventsController < ApplicationController
 
   def index
-    redirect_to root_url
+    @my_events_all = current_user.events.paginate(page: params[ :page], per_page: 10)
+    @my_events_current = current_user.events.find_all{ |elem| elem.occur_today? || 
+                               elem.occur_daily? || elem.occur_weekly_today? ||
+                                               elem.occur_every_month_today? ||
+                                                elem.occur_every_year_today?}
   end
 
   def new
-    @event = Event.new
+    @event = current_user.events.build
   end
 
   def create
@@ -19,7 +23,7 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = Event.find(params[:id])    
+    @event = current_user.events.find(params[:id])    
   end
 
   def update
@@ -35,7 +39,7 @@ class EventsController < ApplicationController
   def destroy
     @event = Event.find(params[:id])
     @event.destroy
-    redirect_to :back
+    redirect_to(user_events_url(current_user))
   end
 
 end

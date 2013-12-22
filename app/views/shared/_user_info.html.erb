@@ -3,5 +3,5 @@
   <%= current_user.email %>  
 </h1>
 <p>
-  <%= link_to "create new event", new_event_path %>
+  <%= link_to "create new event", new_user_event_path(current_user) %>
 </p>

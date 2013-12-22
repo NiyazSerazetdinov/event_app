@@ -1,25 +1,54 @@
-<h1> Events </h1>
-<div class="event row span6">
-  <div class="row">
-    <span class="scheduled-at span1">
-      13.12.2013
-    </span>
-    <h2 class="title span4">
-      <li>
-        <%#= link_to "Event title", edit_user_event_path(:id) %>
-        <%= link_to 'Event title', '#' %>
-      </li>
-    </h2>
-  </div>
-  <p>
-    Event description
-  </p>
-  <div class="row">
-    <span class="repeats-every span2">
-      Repeats every day
-    </span>
-    <span class="created-by span3">
-      Created by Me Some Cool Shrimp
-    </span>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <%= render 'shared/user_info' %>
+      <ul class="breadcrumb">
+        <li><%= link_to "All", root_url %> /</li>
+        <li class="active">My </li> events         
+      </ul>
+      <% if current_user.events.any? %>
+      <span>
+        You have <%= pluralize(@my_events_all.count, "event") %>
+      </span>   
+      <% else %>
+        You have 0 events
+      <% end %>   
+    </section>
+  </aside>
+  <div class="span8">
+    <% if current_user.events.any? %>
+    <div class="tabbable">
+      <ul class="nav nav-tabs">
+        <li class="active">
+          <a href="#list_of_my_all_events" data-toggle="tab">
+            List of all events
+           </a>
+         </li>
+        <li>
+          <a href="#list_of_my_today_events" data-toggle="tab">
+            List of today events
+          </a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="list_of_my_all_events">
+          <h4>
+            You have <%= pluralize(@my_events_all.count, "event") %> in all
+          </h4>
+          <%= render @my_events_all %>
+          <%= will_paginate @my_events_all %>          
+        </div>
+        <div class="tab-pane" id="list_of_my_today_events">
+          <h4>
+            You have <%= pluralize(@my_events_current.count, "event") %> 
+                                                          schedulled for today
+          </h4>
+          <%= render @my_events_current %> 
+        </div>
+      </div>
+    </div>
+    <% else%>
+      You don't have any events yet
+    <% end%>
   </div>
 </div>

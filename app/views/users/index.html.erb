@@ -1,8 +1,56 @@
-<ul class="users">
-  <% @users.each do |user| %>
-    <li>
-      <%= link_to user.name, user %> signed up <%= user.created_at.to_date %>
-    </li>
-  <% end %>
-</ul>
+<% if user_signed_in? %>
+  <div class="row">
+    <aside class="span4">
+      <section>
+        <%= render 'shared/user_info' %>
+        <ul class="breadcrumb">
+          <li class="active">All /</li>
+          <li><%= link_to "My", user_events_path(current_user.id) %> events</li>          
+        </ul>        
+      </section>      
+    </aside>
+    <div class="span8">
+      <div class="tabbable">
+      <ul class="nav nav-tabs">
+        <li class="active">
+          <a href="#list_of_all_events" data-toggle="tab">
+            List of all events
+           </a>
+         </li>
+        <li>
+          <a href="#list_of_today_events" data-toggle="tab">
+            List of today events
+          </a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="list_of_all_events">
+          <h4>
+            <%= pluralize(@events_all.count, "event") %> planned in all
+          </h4>
+          <%= render @events_all %>
+          <%= will_paginate @events_all %>          
+        </div>
+        <div class="tab-pane" id="list_of_today_events">
+          <h4>
+            <%= pluralize(@events_current.count, "event") %> scheduled for today
+          </h4>
+            <%= render @events_current %> 
+        </div>
+      </div>
+      </div>
+    </div>    
+  </div>
+<% else %>
+  <div class="center hero-unit">
+    <h1>Welcome to the Event App</h1>
 
+    <h2>
+      This is the home page for the
+     Events managing application.
+    </h2>
+
+    <%= link_to "Sign up now!", new_user_registration_path,
+                                class: "btn btn-large btn-primary" %>
+  </div>
+<% end %>
